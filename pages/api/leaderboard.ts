@@ -1,25 +1,23 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
+import { LeaderboardData } from '../../types';
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<LeaderboardData>
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<LeaderboardData>) {
   // read all files from public leaderboard folder
-  const imgPaths = fs.readdirSync(path.join(process.cwd(), "public", "users"));
+  const imgPaths = fs.readdirSync(path.join(process.cwd(), 'public', 'users'));
 
   // randomize images
   imgPaths.sort(() => Math.random() - 0.5);
 
-  const leaderboard = imgPaths.map((imgPath) => {
+  const leaderboard = imgPaths.map(imgPath => {
     return {
       // trim extensions from filenames
-      username: imgPath.replace(/\.[^/.]+$/, ""),
+      username: imgPath.replace(/\.[^/.]+$/, ''),
       profileImage: `/users/${imgPath}`,
-      score: 100 + Math.floor(Math.random() * 1000),
+      score: 100 + Math.floor(Math.random() * 1000)
     };
   });
 
