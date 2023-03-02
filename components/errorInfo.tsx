@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 interface Props {
   info: string;
   status: number;

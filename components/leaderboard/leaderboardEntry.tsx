@@ -9,6 +9,7 @@ interface Props {
   userData: UserDetails;
   position: number;
 }
+
 const LeaderboardEntry: FC<Props> = ({ userData, position }) => {
   const user = userData.username;
 

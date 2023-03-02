@@ -15,7 +15,9 @@ const User: FC = () => {
   const { data, error, isLoading } = useSWR<ProfileData>(`/api/profile/${username}`, fetcher);
 
   if (error) return <ErrorInfo info={error.info} status={error.status} />;
+
   if (isLoading) return <div>loading...</div>;
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-center px-10 py-2">
       <h1 className="text-4xl font-bold py-10">User</h1>
