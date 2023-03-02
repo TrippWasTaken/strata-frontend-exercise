@@ -3,7 +3,6 @@ import type { UserDetails } from '../../types';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeartIcon from '../heartIcon';
-import { useLocalState } from '../../contexts/useLocalState';
 
 interface Props {
   userData: UserDetails;
