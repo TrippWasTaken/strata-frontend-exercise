@@ -6,6 +6,7 @@ interface Props {
   data: UserDetails[];
 }
 const LeaderboardTable: FC<Props> = ({ data }) => {
+  const sorted = data.sort((a, b) => b.score - a.score);
   return (
     <>
       <table className="table-auto w-full border-separate border-spacing-y-4 p-10">
@@ -18,7 +19,7 @@ const LeaderboardTable: FC<Props> = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item: UserDetails, index: number) => (
+          {sorted.map((item: UserDetails, index: number) => (
             <LeaderboardEntry userData={item} position={index} key={index} />
           ))}
         </tbody>
