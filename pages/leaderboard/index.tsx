@@ -3,6 +3,7 @@ import { FC } from 'react';
 import useSWR from 'swr';
 import ErrorInfo from '../../components/errorInfo';
 import LeaderboardTable from '../../components/leaderboard/leaderboardTable';
+import Loader from '../../components/loader';
 import { fetcher } from '../../network/fetcher';
 import type { LeaderboardData, ExtendedError } from '../../types';
 
@@ -15,7 +16,7 @@ const Leaderboard: FC = () => {
   const { data, error, isLoading } = useSWR<LeaderboardData>('/api/leaderboard', fetcher, { refreshInterval: 20000 });
 
   if (error) return <ErrorInfo info={error.info} status={error.status} />;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <Loader />;
   return (
     <>
       <div className="w-full h-20 flex flex-col items-center justify-center space-y-12">

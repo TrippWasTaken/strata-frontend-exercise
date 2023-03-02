@@ -8,6 +8,7 @@ import HeartIcon from '../../components/heartIcon';
 import { fetcher } from '../../network/fetcher';
 import type { ProfileData } from '../../types';
 import ErrorInfo from '../../components/errorInfo';
+import Loader from '../../components/loader';
 
 const User: FC = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const User: FC = () => {
 
   if (error) return <ErrorInfo info={error.info} status={error.status} />;
 
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <Loader />;
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center px-10 py-2">
