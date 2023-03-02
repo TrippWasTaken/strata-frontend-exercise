@@ -16,7 +16,7 @@ const HeartIcon: FC<Props> = ({ user }) => {
 
   return (
     <div
-      className={'aspect-square w-5 md:w-10 flex flex-col items-center justify-center'}
+      className={'aspect-square w-5 md:w-10 flex flex-col items-center justify-center hover:cursor-pointer'}
       onClick={() => (liked ? removeUserAction(user) : addUserAction(user))}
     >
       <HeartIconOutline
