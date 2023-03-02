@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { FC } from 'react';
-import useSWR from 'swr';
+import useSWRImmutable from 'swr';
 import ErrorInfo from '../../components/errorInfo';
 import LeaderboardTable from '../../components/leaderboard/leaderboardTable';
 import Loader from '../../components/loader';
@@ -13,7 +13,9 @@ interface swrTypes {
   error: ExtendedError;
 }
 const Leaderboard: FC = () => {
-  const { data, error, isLoading } = useSWR<LeaderboardData>('/api/leaderboard', fetcher, { refreshInterval: 20000 });
+  const { data, error, isLoading } = useSWRImmutable<LeaderboardData>('/api/leaderboard', fetcher, {
+    refreshInterval: 20000
+  });
 
   if (error) return <ErrorInfo info={error.info} status={error.status} />;
   if (isLoading) return <Loader />;

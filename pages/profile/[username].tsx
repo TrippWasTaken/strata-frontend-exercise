@@ -2,7 +2,7 @@ import { ArrowUturnLeftIcon, CakeIcon, InboxIcon } from '@heroicons/react/24/out
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
-import useSWR from 'swr';
+import useSWRImmutable from 'swr';
 import UserInfoItem from '../../components/userProfile/userInfoItem';
 import HeartIcon from '../../components/heartIcon';
 import { fetcher } from '../../network/fetcher';
@@ -13,7 +13,7 @@ import Loader from '../../components/loader';
 const User: FC = () => {
   const router = useRouter();
   const { username } = router.query;
-  const { data, error, isLoading } = useSWR<ProfileData>(`/api/profile/${username}`, fetcher);
+  const { data, error, isLoading } = useSWRImmutable<ProfileData>(`/api/profile/${username}`, fetcher);
 
   if (error) return <ErrorInfo info={error.info} status={error.status} />;
 
